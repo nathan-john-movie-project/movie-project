@@ -1,13 +1,14 @@
 function getMovies(){
-    fetch("https://tropical-horn-mustard.glitch.me/movies").then(resp => resp.json()).then(data => $("#info").text(movieTitles(data)));
+    fetch("https://tropical-horn-mustard.glitch.me/movies").then(resp => resp.json()).then(data => $("#info").html(movieTitles(data)));
 }
 
 getMovies();
 
 function movieTitles(data){
-    let titles = ""
+    let html = ""
     for (let i = 0 ; i < data.length; i++){
-        data[i].title += titles
+       var title = html += data[i].title
+        html += "<div>"+ title +"</div>";
     }
-    return "<h1>"+ titles +"</h1>"
+    return html
 }

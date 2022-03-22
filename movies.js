@@ -14,3 +14,33 @@ function movieTitles(data){
     }
     return html
 }
+
+const moviesURL = "https://tropical-horn-mustard.glitch.me/movies"
+
+var addingMovieName = addingMovie.value;
+var ratingAdd = addingRating.value;
+
+const movieToPost = {
+    title: addingMovieName,
+    rating: ratingAdd
+}
+
+const postOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(movieToPost)
+};
+
+function getMovies(){
+    fetch(moviesURL).then(resp => resp.json()).then(data => console.log(data))
+}
+
+getMovies()
+
+
+
+var addingMovie = document.querySelector('#movieInput');
+var addingRating = document.querySelector('#rating-dropdown')
+var addSubmit = document.querySelector('#submitMovie');

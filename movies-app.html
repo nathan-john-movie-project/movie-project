@@ -12,8 +12,8 @@
     <div class="container-fluid">
         <a class="navbar-brand">Movie App</a>
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Add Movie" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit">Add</button>
+<!--            <input class="form-control me-2" type="search" placeholder="Add Movie" aria-label="Search">-->
+<!--            <button class="btn btn-outline-danger" type="submit">Add</button>-->
         </form>
     </div>
 </nav>
@@ -23,19 +23,17 @@
 
 
 
-<div class="input-group search-bar d-flex justify-content-center">
-    <input type="text" class="form-control" placeholder="Movie Name">
-    <select id="rating-dropdown" class="form-select" aria-label="Default select example">
-        <option selected>Rating</option>
+<div id="addMovie" class="input-group search-bar d-flex justify-content-center position-fixed ">
+    <input id="movieInput" type="text" class="form-control w-25" placeholder="Movie Name">
+    <select id="rating-dropdown" class=" w-25" aria-label="Default select example">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
     </select>
+    <button id="submitMovie" type="button" class="btn btn-outline-danger ">Submit</button>
 </div>
-
-    <button type="button" class="btn btn-outline-danger ">Submit</button>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

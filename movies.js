@@ -14,8 +14,8 @@ function movieTitles(data){
         console.log(title);
         console.log(rating);
         console.log(data, data.length)
-        html += "<div class='parent col-3'>" + "<div class='title text-center'>"+ title +"</div>"
-        +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>" + "</div>";
+        html += "<div class='parent col-3 d-flex flex-column container-fluid'>" +"<div class='poster d-flex justify-content-end'>"+ "<div>"+ "  <button type=\"submit\" class=\"btn btn-danger\">X</button>" +"</div>" +"</div>"+ "<div class='title text-center'>"+ title +"</div>"
+        +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>"+"</div>";
     }
     console.log(html)
     return html

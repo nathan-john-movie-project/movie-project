@@ -1,5 +1,7 @@
+const moviesURL = "https://rumbling-bejewled-chatter.glitch.me/movies"
+
 function getMovies(){
-    fetch("https://tropical-horn-mustard.glitch.me/movies").then(resp => resp.json()).then(data => $("#info").html(movieTitles(data)));
+    fetch("https://rumbling-bejewled-chatter.glitch.me/movies").then(resp => resp.json()).then(data => $("#info").html(movieTitles(data)));
 }
 
 getMovies();
@@ -9,38 +11,41 @@ function movieTitles(data){
     for (let i = 0 ; i < data.length; i++){
        var title = data[i].title
        var rating = data[i].rating
+        console.log(title);
+        console.log(rating);
+        console.log(data, data.length)
         html += "<div class='parent col-3'>" + "<div class='title text-center'>"+ title +"</div>"
         +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>" + "</div>";
     }
+    console.log(html)
     return html
 }
 
-const moviesURL = "https://tropical-horn-mustard.glitch.me/movies"
-
-var addingMovieName = addingMovie.value;
-var ratingAdd = addingRating.value;
-
-const movieToPost = {
-    title: addingMovieName,
-    rating: ratingAdd
-}
-
-const postOptions = {
-    method: 'POST',
-    headers: {
-        'Content-Type' : 'application/json'
-    },
-    body: JSON.stringify(movieToPost)
-};
-
-function getMovies(){
-    fetch(moviesURL).then(resp => resp.json()).then(data => console.log(data))
-}
-
-getMovies()
 
 
 
-var addingMovie = document.querySelector('#movieInput');
-var addingRating = document.querySelector('#rating-dropdown')
-var addSubmit = document.querySelector('#submitMovie');
+$('#submitMovie').click(function(){
+    const addingMovie = document.querySelector('#movieInput').value;
+    const addingRating = document.querySelector('#rating-dropdown').value;
+    const movieToPost = {
+        title: addingMovie,
+        rating: addingRating
+    }
+    console.log(movieToPost)
+    const postOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(movieToPost)
+    };
+
+    fetch(moviesURL, postOptions).then(function (){
+        getMovies()
+    })
+})
+
+
+
+
+

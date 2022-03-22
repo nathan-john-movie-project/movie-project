@@ -11,10 +11,11 @@ function movieTitles(data){
     for (let i = 0 ; i < data.length; i++){
        var title = data[i].title
        var rating = data[i].rating
+        var id = data[i].id
         console.log(title);
         console.log(rating);
         console.log(data, data.length)
-        html += "<div class='parent col-3 d-flex flex-column container-fluid'>" +"<div class='poster d-flex justify-content-end'>"+ "<div>"+ "  <button type=\"submit\" class=\"btn btn-danger\">X</button>" +"</div>" +"</div>"+ "<div class='title text-center'>"+ title +"</div>"
+        html += "<div class='parent col-3 d-flex flex-column container-fluid'>" +"<div class='poster d-flex justify-content-end'>"+ "<div>"+ "  <button onclick='deleteMovie (" + id + ")' type=\"submit\" class=\"btn btn-danger delete-btn\">X</button>" +"</div>" +"</div>"+ "<div class='title text-center'>"+ title +"</div>"
         +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>"+"</div>";
     }
     console.log(html)
@@ -47,5 +48,14 @@ $('#submitMovie').click(function(){
 
 
 
-
+function deleteMovie(id) {
+    let deleteOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    console.log(id,"id")
+    fetch(moviesURL + '/' + id , deleteOptions).then(getMovies);
+    }
 

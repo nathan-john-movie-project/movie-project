@@ -114,3 +114,4 @@ function editMovie(id) {
     };
     fetch(moviesURL + '/' + id , putOptions).then(getMovies);
 }
+

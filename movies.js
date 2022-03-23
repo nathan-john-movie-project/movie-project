@@ -22,7 +22,7 @@ function movieTitles(data){
             +"<div class='poster d-flex justify-content-end'>"
             +'<img class="movie-poster" src="/img/MV5BNGMwNGI0NzAtY2U1Zi00MTI3LTk2NWQtMTU0ZmQ3OGZmMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR86,0,630,1200_AL_.jpg">'
             +"<div>"
-            + "<button type='submit' class='edit-btn'>edit</button>"
+            + "<button type='submit' onclick='editMovie()' class='edit-btn'>edit</button>"
             + "  <button onclick='deleteMovie (" + id + ")' type=\"submit\" class=\"btn btn-danger delete-btn\">X</button>"
             +"</div>"
             +"</div>"
@@ -101,8 +101,8 @@ $('.edit-btn').click(function (e){
 
 function editMovie(id) {
     const movieToPost = {
-        Title: $('#edit-movie-title').val(),
-        Rating: $('#edit-movie-rating').val()
+        Title: $('.title').val(),
+        Rating: $('.rating').val()
     };
     const putOptions = {
         method: 'PUT',
@@ -111,5 +111,5 @@ function editMovie(id) {
         },
         body: JSON.stringify(movieToPost)
     };
-    fetch(moviesURL + '/' + id, putOptions).then(getMovies);
+    fetch(moviesURL + '/' + id , putOptions).then(getMovies);
 }

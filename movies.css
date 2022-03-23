@@ -11,7 +11,7 @@
     width: 100%;
 }
 .poster{
-    width: 100%;
+    width: 90%;
     height:350px;
 
     display: flex;
@@ -23,4 +23,21 @@
 .movie-poster {
     z-index: -1;
     position: absolute;
+}
+body{
+    background-image: linear-gradient(to bottom right, #ff7cbb, rebeccapurple, darkblue, rebeccapurple,#ff7cbb);
+    color: white;
+}
+.title{
+    background-color: rgba(0, 0, 0, 0.27);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.rating{
+    background-color: rgba(0, 0, 0, 0.27);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.bg-nav{
+    background-color: rgba(0, 0, 0, 0.27);
 }

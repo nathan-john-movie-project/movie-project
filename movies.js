@@ -22,12 +22,12 @@ function movieTitles(data){
             +"<div class='poster d-flex justify-content-end'>"
             +'<img class="movie-poster" src="/img/MV5BNGMwNGI0NzAtY2U1Zi00MTI3LTk2NWQtMTU0ZmQ3OGZmMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR86,0,630,1200_AL_.jpg">'
             +"<div>"
-            + "<button type='submit' onclick='editMovie()' class='edit-btn'>edit</button>"
+            + "<button type='submit' onclick='editMovie(" + id + ")' class='edit-btn'>edit</button>"
             + "  <button onclick='deleteMovie (" + id + ")' type=\"submit\" class=\"btn btn-danger delete-btn\">X</button>"
             +"</div>"
             +"</div>"
-            + "<div class='title text-center'>" + title +"</div>"
-            +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>"
+            + "<div id='title' class='title text-center'>" + title +"</div>"
+            +"<div id='rating' class='rating text-center'>"+ "Rating: " + rating +"</div>"
             +"</div>";
     }
     console.log(html)
@@ -91,21 +91,22 @@ let modification = {
 //     }
 //     fetch(userEdit + '/1', patchOptions).then(getMovies);
 // }
-
-$('.edit-btn').click(function (e){
-    e.preventDefault();
-    const selectedMovie = $('#movies-list').val();
-    editMovie(selectedMovie);
-    clearValue();
-});
+//
+// $('.edit-btn').click(function (e){
+//     e.preventDefault();
+//     const selectedMovie = $('#movies-list').val();
+//     editMovie(selectedMovie);
+//     clearValue();
+// });
 
 function editMovie(id) {
     const movieToPost = {
-        Title: $('.title').val(),
-        Rating: $('.rating').val()
+        title: $('#edit-movie-title').val(),
+        rating: $('#edit-movie-rating').val()
     };
+    console.log(movieToPost, 'movieToPost')
     const putOptions = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type' : 'application/json'
         },

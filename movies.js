@@ -18,14 +18,21 @@ function movieTitles(data){
         console.log(rating);
         console.log(data, data.length)
         console.log(poster)
-        html += "<div class='parent col-3 d-flex flex-column container-fluid'>" +"<div class='poster d-flex justify-content-end'>"+'<img src="('+poster+')">' +"<div>"+ "  <button onclick='deleteMovie (" + id + ")' type=\"submit\" class=\"btn btn-danger delete-btn\">X</button>" +"</div>" +"</div>"+ "<div class='title text-center'>"+ title +"</div>"
-        +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>"+"</div>";
+        html += "<div class='parent col-3 d-flex flex-column container-fluid'>"
+            +"<div class='poster d-flex justify-content-end'>"
+            +'<img class="movie-poster" src="/img/MV5BNGMwNGI0NzAtY2U1Zi00MTI3LTk2NWQtMTU0ZmQ3OGZmMjc2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR86,0,630,1200_AL_.jpg">'
+            +"<div>"
+            + "<button type='submit' class='edit-btn'>edit</button>"
+            + "  <button onclick='deleteMovie (" + id + ")' type=\"submit\" class=\"btn btn-danger delete-btn\">X</button>"
+            +"</div>"
+            +"</div>"
+            + "<div class='title text-center'>" + title +"</div>"
+            +"<div class='rating text-center'>"+ "Rating: " + rating +"</div>"
+            +"</div>";
     }
     console.log(html)
     return html
 }
-
-
 
 
 $('#submitMovie').click(function(){
@@ -50,7 +57,6 @@ $('#submitMovie').click(function(){
 })
 
 
-
 function deleteMovie(id) {
     let deleteOptions = {
         method: 'DELETE',
@@ -62,3 +68,26 @@ function deleteMovie(id) {
     fetch(moviesURL + '/' + id , deleteOptions).then(getMovies);
     }
 
+
+//EDIT MOVIE
+let modification = {
+    title: "Eleanor of Aquitaine: Queen of France, Queen of England"
+}
+
+
+
+
+
+
+
+function editMovie(){
+    let userEdit = document.querySelector('.edit-btn')
+    const patchOptions = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(modification)
+    }
+    fetch(userEdit + '/1', patchOptions).then(getMovies);
+}

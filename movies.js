@@ -80,14 +80,36 @@ let modification = {
 
 
 
-function editMovie(){
-    let userEdit = document.querySelector('.edit-btn')
-    const patchOptions = {
-        method: 'PATCH',
+// function editMovie(){
+//     let userEdit = document.querySelector('.edit-btn')
+//     const patchOptions = {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type' : 'application/json'
+//         },
+//         body: JSON.stringify(modification)
+//     }
+//     fetch(userEdit + '/1', patchOptions).then(getMovies);
+// }
+
+$('.edit-btn').click(function (e){
+    e.preventDefault();
+    const selectedMovie = $('#movies-list').val();
+    editMovie(selectedMovie);
+    clearValue();
+});
+
+function editMovie(id) {
+    const movieToPost = {
+        Title: $('#edit-movie-title').val(),
+        Rating: $('#edit-movie-rating').val()
+    };
+    const putOptions = {
+        method: 'PUT',
         headers: {
             'Content-Type' : 'application/json'
         },
-        body: JSON.stringify(modification)
-    }
-    fetch(userEdit + '/1', patchOptions).then(getMovies);
+        body: JSON.stringify(movieToPost)
+    };
+    fetch(moviesURL + '/' + id, putOptions).then(getMovies);
 }
